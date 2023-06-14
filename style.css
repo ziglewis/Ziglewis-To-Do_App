@@ -37,8 +37,9 @@ body {
 
 }
 
-.time-date input {
-    width: 100px;
+.time-and-date-input input {
+    width: 200px;
+    height: 20px;
 }
 
 .buttons {
@@ -73,7 +74,36 @@ body {
  .each-task {
     line-height: 2px;
     border: 2px solid red;
-    width: fit-content;
+    width: 80%;
     font-size: small;
+    padding-bottom: 10px;
  }
 
+ .cart-buttons {
+    display: flex;
+    justify-content: space-around;
+ }
+
+ .cart-buttons-number,  .cart-buttons-edit {
+    background-color: rgb(197, 245, 126);
+    border: 1px solid black;
+    padding: 5px;
+ }
+ 
+
+ .cart-buttons-status, .cart-buttons-delete {
+    background-color: coral;
+    border: 1px solid black;
+    padding: 5px;
+ }
+ 
+    
+
+ .Real-live-time {
+    background-color: aquamarine;
+    height: fit-content;
+    width: 100px;
+    position: absolute;
+    padding: 20px 10px;
+    border-radius: 50%;
+ }

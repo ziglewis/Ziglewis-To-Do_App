@@ -11,7 +11,16 @@
 </head>
 
 <main>
+
+    
+
 <body>
+
+    <div class="Real-live-time">
+        <div class="display">  </div>
+      </div>
+
+
     <h1> To Do App</h1>
     <p> <i> Let"s help you put up an itinerary that works! </i></p>
     <div class="prompt-display"></div>
@@ -22,19 +31,13 @@
 
     <div class="time-date"> <!-- Time and date of event starts here -->
         <p> <i> Optional: Set time to get notification as a reminder! </i></p>
-    <div class="time-input">
-        <input class="hour" type="number" placeholder="Hour" min="0" max="24"> 
-        <input class="minutes" type="number" placeholder="min's" min="0" max="59"> 
-        <input class="seconds" type="number" placeholder="Sec's" min="0" max="59"> 
+    <div class="time-and-date-input">
+        <input class="time-input" type="time" > 
+        <input class="date-input" type="date">
     </div>
       
 
-    <div class="Date-input">
-        <input class="day" type="number" placeholder="Day" min="0" max="31"> 
-        <input class="month" type="number" placeholder="Month" min="0" max="24"> 
-        <input class="year" type="number" placeholder="Year" min="2023" max="2200"> 
-    </div>
-
+    
     </div>       <!-- Time and date ends here -->
 
          <!-- the buttons started here -->
@@ -51,6 +54,13 @@
                 <p>Title:</p>
                 <p>Description:</p>
                 <P>Time:</P>
+                <div class="cart-buttons">
+                    <div class="cart-buttons-number"> 1</div>
+                    <div class="cart-buttons-edit"> edit</div>
+                    <div class="cart-buttons-delete"> delete</div>
+                    <div class="cart-buttons-status">Pending</div>
+
+                </div>
             </div>
 
 
