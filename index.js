@@ -35,7 +35,13 @@
   
   
   
-  
+            
+            
+             let eachTitle = ""
+              let eachDescription = ""
+               let eachTime  = ""
+                let eachDate = ""
+              
            let myPromptDisplayMessage = ""
            let isSetTimerActive = false
            
@@ -47,55 +53,44 @@
   
           const addToCart = () => {
               
-              let eachTitle = ""
-              let eachDescription = ""
-               let eachTime  = ""
-                let eachDate = ""
-              
-              
                if(isSetTimerActive) {
                       clearTimeout(myPromptDisplayMessage) }
               
               if (myToDoTitleInputField.value==="") { 
-                  myPrompt.textContent = "Please, add a Title"
+                  myPrompt.textContent = "❌...Please, add a Title"
                    } else {
               eachTitle = myToDoTitleInputField.value;
-              myToDoTitleInputField.value = "" };
+              myToDoTitleInputField.value = "" 
               
                if (myTaskDescriptionInputField.value .value==="") { 
                  eachDescription = "Not provided"
-                   } else {
-                       eachDescription = myTaskDescriptionInputField.value 
-                   }
+                   } else { eachDescription = myTaskDescriptionInputField.value
+                   myTaskDescriptionInputField.value = ""}
                    
-            if (myTimeInputField.value==="") { 
-                  eachTime = "Not provided"
-                   } else {
-                       eachTime = myTimeInputField.value
-                   }
+            if (myTimeInputField.value==="") {eachTime = "Not provided"
+                   } else {eachTime = myTimeInputField.value
+                  myTimeInputField.value = "" }
                    
-            
-            if (myDateInputField.value==="") { 
-                 eachDate = "Not provided"
-                   } else {
-                       eachDate = myDateInputField.value
-                   }
-              
-             
-              myPrompt.textContent = "Successfully Added to cart";
-              
+            if (myDateInputField.value==="") {eachDate = "Not provided"
+                   } else {eachDate = myDateInputField.value
+                   myDateInputField.value = "" }
+    
+              myPrompt.textContent = "✅ Successfully Added to cart";
+                 }
   
               console.log(eachTitle);
               console.log(eachDescription )
               console.log(eachTime)
               console.log(eachDate)
               
-               
-  
-              
-              myPromptDisplayMessage = setTimeout(wipeScreen.bind(null, myPrompt), 5000);
+              myPromptDisplayMessage = setTimeout(wipeScreen.bind(null, myPrompt), 3000);
               isSetTimerActive = true
           };
           
   
   myAddToCartBtn.addEventListener("click", addToCart)
+  
+  
+  
+  
+  
