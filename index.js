@@ -2,6 +2,8 @@
 
 
 
+
+
   // code for live time on screen
   setInterval(myTimer, 1000);
 
@@ -35,7 +37,21 @@
   
   
   
-            
+  
+  let motherCartArray = [ ]
+      let  objectMarker  = ()=> {
+          let task = {
+                    Title: eachTitle,
+                    Description: eachDescription,
+                    AlertTime : eachTime,
+                    AlertDate :eachDate  
+                     }
+                 motherCartArray.push(task)
+                 console.log(motherCartArray.length)
+          
+                  }  
+      
+      
             
              let eachTitle = ""
               let eachDescription = ""
@@ -74,7 +90,8 @@
             if (myDateInputField.value==="") {eachDate = "Not provided"
                    } else {eachDate = myDateInputField.value
                    myDateInputField.value = "" }
-    
+                
+                  objectMarker()
               myPrompt.textContent = "✅ Successfully Added to cart";
                  }
   
@@ -85,6 +102,7 @@
               
               myPromptDisplayMessage = setTimeout(wipeScreen.bind(null, myPrompt), 3000);
               isSetTimerActive = true
+              
           };
           
   
