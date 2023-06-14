@@ -1,3 +1,32 @@
+/* :root {
+   --black: #000;
+   --white: #fff;
+   --max-width: 1000px;
+   --light-grey: #d9d9d9;
+   --dark-grey: #7c7979;
+   --box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+ }
+  */
+ /* darkmode */
+ /* .darkmode {
+   --black: #fff;
+   --white: #000;
+ 
+   --box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+   transition: 0.3s ease-in-out;
+ }
+ body {
+   font-family: "Open Sans", sans-serif;
+   padding: 0;
+   margin: 0;
+   background-color: var(--white);
+   transition: 0.3s ease-in-out;
+ } */
+
+
+
+
+
 
 
 body {
