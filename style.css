@@ -61,3 +61,19 @@ body {
     height: 30px;
     border-radius: 30px;
  }
+
+ .cart{ 
+    display: flex;
+    flex-direction: column;
+    border: 2px solid violet;
+    padding: 10px 5px;
+    align-items: center;
+ }
+
+ .each-task {
+    line-height: 2px;
+    border: 2px solid red;
+    width: fit-content;
+    font-size: small;
+ }
+
