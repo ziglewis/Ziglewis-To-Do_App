@@ -8,8 +8,6 @@
 
 
 
-
-
   // code for live time on screen
   setInterval(myTimer, 1000);
 
@@ -69,9 +67,11 @@
                   myPrompt.textContent = "❌...Please, add a Title"
                    } else {
                        generatedCartContentResult = ""
+                       setTaskNumber = 1
+                       
               eachTitle = myToDoTitleInputField.value;
               myToDoTitleInputField.value = "" 
-              setTaskNumber = 1
+              
               
                if (myTaskDescriptionInputField.value ==="") { 
                  eachDescription = "Not provided"
@@ -144,12 +144,13 @@
                 <div class="each-task">
                 <p>Title: ${data.title}</p>
                 <p>Description: ${data.Description}</p>
-                <P>Time: ${data.AlertTime} Date: (${data.AlertDate})</P>
+                <P>Time: ${data.AlertTime} Date: ${data.AlertDate}</P>
                 <div class="cart-buttons">
-                    <div class="cart-buttons-number"> ${setTaskNumber} </div>
-                    <div class="cart-buttons-edit" value = ${setTaskNumber} > edit</div>
-                    <div class="cart-buttons-delete" value = ${setTaskNumber} > delete</div>
-                    <div class="cart-buttons-status">Pending</div>
+                    <button class="cart-buttons-number"> ${setTaskNumber} </button>
+                    <button class="cart-buttons-edit" value = ${setTaskNumber} > edit</button>
+                    <button class="cart-buttons-delete" value = ${setTaskNumber} onclick="deleteTask()"> delete</button>
+                    <button class="cart-buttons-status">Pending</button>
+                </div>
                 </div>
                 `
                 setTaskNumber += 1
@@ -161,9 +162,62 @@
   
   
   
-//   motherCartArray.forEach(generateCartContents)
+
   
-//                 myCartContent.innerHTML = generatedCartContentResult
+//  HANDLING DELETING       
   
+//   for (let i = 0; i < motherCartArray.length ; i++) {
+//         document.querySelectorAll(".all-score-btns")[i].addEventListener("click", function() {
+//          if( this.className.includes("away")) { 
+//               awayScore.textContent = Number(awayScore.textContent) + Number(this.textContent)
+//          } else{ homeScore.textContent = Number(homeScore.textContent) + Number(this.textContent)
+//               }
+//          });
+
+// localStorage.setItem('name', 'John Doe');
+// const name = localStorage.getItem('name')
+// localStorage.removeItem('name');
   
+  localStorage.setItem('cartContent', generatedCartContentResult )
+  localStorage.removeItem('cartContent')
+  
+  function deleteTask(data) {
+      
+      if(isSetTimerActive) {
+                      clearTimeout(myPromptDisplayMessage) }
+      
+     const allDeleteBtns = document.querySelectorAll('.cart-buttons-delete');
+
+for (let desiredDeleteBtn of allDeleteBtns) {
+  desiredDeleteBtn.addEventListener('click', () => {
+    // Remove the item from the cart
+    // desiredDeleteBtn.parentElement.removeChild(desiredDeleteBtn);
+    
+    let itemToDeleteIndex = desiredDeleteBtn.value -1
+    
+    
+    generatedCartContentResult = ""
+                       setTaskNumber = 1
+    
+    motherCartArray.splice(itemToDeleteIndex, 1)
+    
+    
+      motherCartArray.forEach(generateCartContents)
+                    console.log(generatedCartContentResult)
+                    myCartContent.innerHTML = generatedCartContentResult
+                    
+                    myPrompt.textContent = "✅ Successfully deleted a task from cart";
+    
+    
+    
+    myPromptDisplayMessage = setTimeout(wipeScreen.bind(null, myPrompt), 3000);
+              isSetTimerActive = true
+    
+    console.log (desiredDeleteBtn.value)
+    console.log(motherCartArray)
+    
+  });
+}
+     
+  }
   
