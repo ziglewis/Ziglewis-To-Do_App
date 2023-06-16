@@ -4,6 +4,11 @@
 
 
 
+
+
+
+
+
   // code for live time on screen
   setInterval(myTimer, 1000);
 
@@ -33,41 +38,26 @@
    let myCartBtnEdit = document.querySelector("cart-buttons-edit")
    let myCartBtnDelete = document.querySelector(".cart-buttons-delete")
    let myCartBtnStatus = document.querySelector(".cart-buttons-status")
-   let myEachTask = document.querySelectorAll(".each-task")
+   let myEachTask = document.querySelectorAll(".each-task")  
+   let myCartContent = document.querySelector(".cart")
+  
+//   console.log(myAddToCartBtn.dataset.value)
+//    console.log(myAddToCartBtn.value)
+  
+  
+        let motherCartArray = [ ]
+        let eachTitle = ""
+        let eachDescription = ""
+        let eachTime  = ""
+        let eachDate = "" 
+        let setTaskNumber = 1
+        let myPromptDisplayMessage = ""
+        let isSetTimerActive = false
+         var generatedCartContentResult = "<p>wonder</p>"
   
   
   
-  
-  let motherCartArray = [ ]
-      let  objectMarker  = ()=> {
-          let task = {
-                    Title: eachTitle,
-                    Description: eachDescription,
-                    AlertTime : eachTime,
-                    AlertDate :eachDate  
-                     }
-                 motherCartArray.push(task)
-                 console.log(motherCartArray.length)
-          
-                  }  
-      
-      
-            
-             let eachTitle = ""
-              let eachDescription = ""
-               let eachTime  = ""
-                let eachDate = ""
-              
-           let myPromptDisplayMessage = ""
-           let isSetTimerActive = false
-           
-          const wipeScreen = (data) => {
-              data.textContent = ""
-              data.value = ""
-              isSetTimerActive = false
-          }
-  
-          const addToCart = () => {
+             const addToCart = () => {
               
                if(isSetTimerActive) {
                       clearTimeout(myPromptDisplayMessage) }
@@ -92,6 +82,10 @@
                    myDateInputField.value = "" }
                 
                   objectMarker()
+                    motherCartArray.forEach(generateCartContents)
+                    console.log(generatedCartContentResult)
+                    myCartContent.innerHTML = generatedCartContentResult
+                 
               myPrompt.textContent = "✅ Successfully Added to cart";
                  }
   
@@ -99,16 +93,72 @@
               console.log(eachDescription )
               console.log(eachTime)
               console.log(eachDate)
+            //   console.log(myAddToCartBtn.value)
+            console.log(generatedCartContentResult)
+               
+            
+                
+              
               
               myPromptDisplayMessage = setTimeout(wipeScreen.bind(null, myPrompt), 3000);
               isSetTimerActive = true
               
           };
+  
+      let  objectMarker  = ()=> {
+          let task = {
+                    title: eachTitle,
+                    Description: eachDescription,
+                    AlertTime: eachTime,
+                    AlertDate: eachDate  
+                     }
+                 motherCartArray.push(task)
+                 console.log(motherCartArray.length)
+                 console.log(motherCartArray[0].title)
+                 console.log(task)
+          
+                  }  
+           
+          const wipeScreen = (data) => {
+              data.textContent = ""
+              data.value = ""
+              isSetTimerActive = false
+          }
+  
+  
+         
           
   
   myAddToCartBtn.addEventListener("click", addToCart)
   
+  // generating the cart html to store your task
+        
+  generateCartContents = ()=> {
+                    
+                generatedCartContentResult += `
+                <div class="each-task">
+                <p>Title: ${this.title}</p>
+                <p>Description: ${this.Description}</p>
+                <P>Time: ${this.AlertTime} (${this.AlertDate})</P>
+                <div class="cart-buttons">
+                    <div class="cart-buttons-number"> ${setTaskNumber} </div>
+                    <div class="cart-buttons-edit" value = ${setTaskNumber} > edit</div>
+                    <div class="cart-buttons-delete" value = ${setTaskNumber} > delete</div>
+                    <div class="cart-buttons-status">Pending</div>
+                </div>
+                `
+                setTaskNumber += 1
+                if (setTaskNumber === motherCartArray.length) {
+                    setTaskNumber = 1
+                }
+                console.log(motherCartArray)
+  }
   
+  
+  
+//   motherCartArray.forEach(generateCartContents)
+  
+//                 myCartContent.innerHTML = generatedCartContentResult
   
   
   
