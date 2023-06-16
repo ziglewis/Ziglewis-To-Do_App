@@ -9,6 +9,7 @@
 
 
 
+
   // code for live time on screen
   setInterval(myTimer, 1000);
 
@@ -53,11 +54,13 @@
         let setTaskNumber = 1
         let myPromptDisplayMessage = ""
         let isSetTimerActive = false
-         var generatedCartContentResult = "<p>wonder</p>"
+         var generatedCartContentResult = ""
   
   
   
              const addToCart = () => {
+                 
+                 
               
                if(isSetTimerActive) {
                       clearTimeout(myPromptDisplayMessage) }
@@ -65,10 +68,12 @@
               if (myToDoTitleInputField.value==="") { 
                   myPrompt.textContent = "❌...Please, add a Title"
                    } else {
+                       generatedCartContentResult = ""
               eachTitle = myToDoTitleInputField.value;
               myToDoTitleInputField.value = "" 
+              setTaskNumber = 1
               
-               if (myTaskDescriptionInputField.value .value==="") { 
+               if (myTaskDescriptionInputField.value ==="") { 
                  eachDescription = "Not provided"
                    } else { eachDescription = myTaskDescriptionInputField.value
                    myTaskDescriptionInputField.value = ""}
@@ -133,13 +138,13 @@
   
   // generating the cart html to store your task
         
-  generateCartContents = ()=> {
+  generateCartContents = (data)=> {
                     
                 generatedCartContentResult += `
                 <div class="each-task">
-                <p>Title: ${this.title}</p>
-                <p>Description: ${this.Description}</p>
-                <P>Time: ${this.AlertTime} (${this.AlertDate})</P>
+                <p>Title: ${data.title}</p>
+                <p>Description: ${data.Description}</p>
+                <P>Time: ${data.AlertTime} Date: (${data.AlertDate})</P>
                 <div class="cart-buttons">
                     <div class="cart-buttons-number"> ${setTaskNumber} </div>
                     <div class="cart-buttons-edit" value = ${setTaskNumber} > edit</div>
@@ -148,9 +153,9 @@
                 </div>
                 `
                 setTaskNumber += 1
-                if (setTaskNumber === motherCartArray.length) {
-                    setTaskNumber = 1
-                }
+                // if (setTaskNumber === motherCartArray.length) {
+                //     setTaskNumber = 1
+                // }
                 console.log(motherCartArray)
   }
   
