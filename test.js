@@ -1,16 +1,3 @@
-localStorage.removeItem(cartContentKey);
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -77,7 +64,7 @@ localStorage.removeItem(cartContentKey);
          
          let getMotherCartArray = localStorage.getItem(motherCartArrayContentKey)
           motherCartArray = ( getMotherCartArray.split(","))
-          console.log(motherCartArray)
+      console.log(motherCartArray)
         
         } 
   
