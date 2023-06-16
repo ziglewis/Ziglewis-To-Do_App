@@ -8,6 +8,7 @@
 
 
 
+
   // code for live time on screen
   setInterval(myTimer, 1000);
 
@@ -39,9 +40,26 @@
    let myCartBtnStatus = document.querySelector(".cart-buttons-status")
    let myEachTask = document.querySelectorAll(".each-task")  
    let myCartContent = document.querySelector(".cart")
+
+   let cartContentKey = 'cartContent'
+    
+    
+    if (localStorage.getItem(cartContentKey) !== null) {
+  // The element is in local storage.
+         myCartContent.innerHTML = localStorage.getItem(cartContentKey)
+        } 
+
+    
+    
+
   
-//   console.log(myAddToCartBtn.dataset.value)
-//    console.log(myAddToCartBtn.value)
+  
+
+
+
+// else {
+  // The element is not in local storage.
+// }
   
   
         let motherCartArray = [ ]
@@ -66,6 +84,15 @@
               if (myToDoTitleInputField.value==="") { 
                   myPrompt.textContent = "❌...Please, add a Title"
                    } else {
+                       
+                                    
+                    if (localStorage.getItem(cartContentKey) !== null) {
+                        // The element is in local storage.
+                        localStorage.removeItem(cartContentKey)       
+                        } 
+
+                    
+                    
                        generatedCartContentResult = ""
                        setTaskNumber = 1
                        
@@ -90,6 +117,8 @@
                     motherCartArray.forEach(generateCartContents)
                     console.log(generatedCartContentResult)
                     myCartContent.innerHTML = generatedCartContentResult
+                    
+                 localStorage.setItem( cartContentKey, generatedCartContentResult )
                  
               myPrompt.textContent = "✅ Successfully Added to cart";
                  }
@@ -149,7 +178,6 @@
                     <button class="cart-buttons-number"> ${setTaskNumber} </button>
                     <button class="cart-buttons-edit" value = ${setTaskNumber} > edit</button>
                     <button class="cart-buttons-delete" value = ${setTaskNumber} onclick="deleteTask()"> delete</button>
-                    <button class="cart-buttons-status">Pending</button>
                 </div>
                 </div>
                 `
@@ -178,13 +206,14 @@
 // const name = localStorage.getItem('name')
 // localStorage.removeItem('name');
   
-  localStorage.setItem('cartContent', generatedCartContentResult )
-  localStorage.removeItem('cartContent')
+  
   
   function deleteTask(data) {
       
       if(isSetTimerActive) {
                       clearTimeout(myPromptDisplayMessage) }
+                      
+         
       
      const allDeleteBtns = document.querySelectorAll('.cart-buttons-delete');
 
@@ -192,6 +221,7 @@ for (let desiredDeleteBtn of allDeleteBtns) {
   desiredDeleteBtn.addEventListener('click', () => {
     // Remove the item from the cart
     // desiredDeleteBtn.parentElement.removeChild(desiredDeleteBtn);
+    
     
     let itemToDeleteIndex = desiredDeleteBtn.value -1
     
@@ -205,6 +235,8 @@ for (let desiredDeleteBtn of allDeleteBtns) {
       motherCartArray.forEach(generateCartContents)
                     console.log(generatedCartContentResult)
                     myCartContent.innerHTML = generatedCartContentResult
+                    
+                    localStorage.setItem( cartContentKey, generatedCartContentResult )
                     
                     myPrompt.textContent = "✅ Successfully deleted a task from cart";
     
