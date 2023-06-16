@@ -2,7 +2,6 @@
 
 
 
-
 // localStorage.clear()
 
 
@@ -62,8 +61,8 @@
   // The element is in local storage.
          myCartContent.innerHTML = localStorage.getItem(cartContentKey)
          
-         let getMotherCartArray = localStorage.getItem(motherCartArrayContentKey)
-          motherCartArray = ( getMotherCartArray.split(","))
+         let getMotherCartArray = JSON.parse(localStorage.getItem(motherCartArrayContentKey))
+          motherCartArray =  getMotherCartArray
       console.log(motherCartArray)
         
         } 
@@ -109,7 +108,7 @@
                    myDateInputField.value = "" }
                 
                   objectMarker()
-                  localStorage.setItem( motherCartArrayContentKey, motherCartArray )
+                  localStorage.setItem( motherCartArrayContentKey, JSON.stringify(motherCartArray) )
                     motherCartArray.forEach(generateCartContents)
                     console.log(generatedCartContentResult)
                     myCartContent.innerHTML = generatedCartContentResult
@@ -229,7 +228,7 @@ for (let desiredDeleteBtn of allDeleteBtns) {
     
     motherCartArray.splice(itemToDeleteIndex, 1)
     
-      localStorage.setItem( motherCartArrayContentKey, motherCartArray )
+      localStorage.setItem( motherCartArrayContentKey, JSON.stringify(motherCartArray) )
       motherCartArray.forEach(generateCartContents)
                     console.log(generatedCartContentResult)
                     myCartContent.innerHTML = generatedCartContentResult
