@@ -1,7 +1,6 @@
 
 
 
-
 // localStorage.clear()
 
 
@@ -171,8 +170,8 @@
                 <P>Time: ${data.AlertTime} Date: ${data.AlertDate}</P>
                 <div class="cart-buttons">
                     <button class="cart-buttons-number"> ${setTaskNumber} </button>
-                    <button class="cart-buttons-edit" value = ${setTaskNumber} > edit</button>
-                    <button class="cart-buttons-delete" value = ${setTaskNumber} onclick="deleteTask()"> delete</button>
+                    <button class="cart-buttons-edit" value = ${setTaskNumber} onclick="editTask()"> edit</button>
+                    <button class="cart-buttons-delete" value = ${setTaskNumber} ondblclick="deleteTask()"> delete</button>
                 </div>
                 </div>
                 `
@@ -189,33 +188,16 @@
   
 //  HANDLING DELETING       
   
-//   for (let i = 0; i < motherCartArray.length ; i++) {
-//         document.querySelectorAll(".all-score-btns")[i].addEventListener("click", function() {
-//          if( this.className.includes("away")) { 
-//               awayScore.textContent = Number(awayScore.textContent) + Number(this.textContent)
-//          } else{ homeScore.textContent = Number(homeScore.textContent) + Number(this.textContent)
-//               }
-//          });
-
-// localStorage.setItem('name', 'John Doe');
-// const name = localStorage.getItem('name')
-// localStorage.removeItem('name');
-
-
-  
-  
   
   function deleteTask(data) {
       
-      if(isSetTimerActive) {
-                      clearTimeout(myPromptDisplayMessage) }
+      if(isSetTimerActive) { clearTimeout(myPromptDisplayMessage) }
                       
          
       
      const allDeleteBtns = document.querySelectorAll('.cart-buttons-delete');
 
 for (let desiredDeleteBtn of allDeleteBtns) {
-  desiredDeleteBtn.addEventListener('click', () => {
     // Remove the item from the cart
     // desiredDeleteBtn.parentElement.removeChild(desiredDeleteBtn);
     
@@ -245,8 +227,77 @@ for (let desiredDeleteBtn of allDeleteBtns) {
     console.log (desiredDeleteBtn.value)
     console.log(motherCartArray)
     
-  });
-}
+                  }
      
   }
   
+  
+  //  HANDLING EDITING
+  
+  
+  
+  function editTask(data) {
+      
+      if(isSetTimerActive) {
+                      clearTimeout(myPromptDisplayMessage) }
+                      
+         
+      
+     const allEditBtns = document.querySelectorAll('.cart-buttons-edit');
+
+for (let desiredEditBtn of allEditBtns) {
+  desiredEditBtn.addEventListener('click', () => {
+    // Remove the item from the cart
+    // desiredDeleteBtn.parentElement.removeChild(desiredDeleteBtn);
+    
+    
+    let itemToEditIndex = desiredEditBtn.value -1
+    
+    // stoped here ooooo
+    
+    myToDoTitleInputField.value = motherCartArray[itemToEditIndex].title
+    
+    if (motherCartArray[itemToEditIndex].Description === "Not provided" ){
+        myTaskDescriptionInputField = ""
+    }else{ myTaskDescriptionInputField = motherCartArray[itemToEditIndex].Description }
+    
+     if (motherCartArray[itemToEditIndex].AlertTime === "Not provided" ){
+        myTimeInputField = ""
+    }else{ myTimeInputField = motherCartArray[itemToEditIndex].AlertTime }
+    
+     if (motherCartArray[itemToEditIndex].AlertDate === "Not provided" ){
+        myDateInputField = ""
+    }else{ myDateInputField = motherCartArray[itemToEditIndex].AlertDate}
+    
+   
+    
+   
+    
+    
+    // generatedCartContentResult = ""
+    //                    setTaskNumber = 1
+    
+    // motherCartArray.splice(itemToDeleteIndex, 1)
+    
+    //   localStorage.setItem( motherCartArrayContentKey, JSON.stringify(motherCartArray) )
+    //   motherCartArray.forEach(generateCartContents)
+    //                 console.log(generatedCartContentResult)
+    //                 myCartContent.innerHTML = generatedCartContentResult
+                    
+    //                 localStorage.setItem( cartContentKey, generatedCartContentResult )
+                    
+    //                 myPrompt.textContent = "✅ Successfully deleted a task from cart";
+    
+    
+    
+    // myPromptDisplayMessage = setTimeout(wipeScreen.bind(null, myPrompt), 3000);
+    //           isSetTimerActive = true
+    
+    // console.log (desiredDeleteBtn.value)
+    // console.log(motherCartArray)
+    
+                  });}
+     
+  }
+  
+    
