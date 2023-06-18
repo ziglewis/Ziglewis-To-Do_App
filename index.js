@@ -189,11 +189,18 @@
   myAddToCartBtn.addEventListener("click", addToCart)  //event listener for add to cart button
   
 
-//  HANDLING EVERYTHING ABOUT DELETING       
+//  HANDLING EVERYTHING ABOUT DELETING  TASK     
 
   function deleteTask(data) {
-
-               if(isSetTimerActive) {clearTimeout(myPromptDisplayMessage) }
+                
+                if(edit) {
+                
+                if(isSetTimerActive) {clearTimeout(myPromptDisplayMessage) }
+                myPrompt.textContent = "⛔...Wait! Editing in progress";
+                 myPromptDisplayMessage = setTimeout(wipeScreen.bind(null, myPrompt), 3000);
+              isSetTimerActive = true
+                return}
+                
                if(isSetTimerActive) { clearTimeout(myPromptDisplayMessage) }
                let itemToDeleteIndex = data -1
     
@@ -248,6 +255,7 @@
         edit = true
         editTaskIndex = itemToEditIndex     
          }
+
 
 //HANDLING THE VIEW CART BTN
 
