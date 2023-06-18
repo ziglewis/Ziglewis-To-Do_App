@@ -2,6 +2,7 @@
 
 
 
+
 // Thank you Jesus
 
 // localStorage.clear()
@@ -57,13 +58,7 @@
    let cartContentKey = 'cartContent'
     let motherCartArrayContentKey = "motherCartArrayContent"
     
-    if (localStorage.getItem(cartContentKey) !== null) {
-     // The element is in local storage.
-         myCartContent.innerHTML = localStorage.getItem(cartContentKey) 
-         
-         let getMotherCartArray = JSON.parse(localStorage.getItem(motherCartArrayContentKey))  //without the JSON.parse you will get object object, useless for what you want.
-          motherCartArray =  getMotherCartArray
-        } 
+   
   
   
              const addToCart = () => {
@@ -148,7 +143,7 @@
   
   // This code generates my cart inner html to display your task in the cart, it generates content for each data passed by taking the augument data. One at a time. It also assigns class and value to each data, so we can identify each individual data. study it more succintly.
         
-  generateCartContents = (data)=> {
+ let generateCartContents = (data)=> {
 
               
                     
@@ -178,14 +173,12 @@
                 console.log(motherCartArray[index].Status)
                 motherCartArray[index].Status = "checked"
                 console.log(motherCartArray[index].Status)
-                } else{
+            } else{
                 motherCartArray[index].Status = ""
                 console.log(motherCartArray[index].Status)
-               }
-               
+            }
    console.log(motherCartArray[index])
     localStorage.setItem( motherCartArrayContentKey, JSON.stringify(motherCartArray) )
-
 }
       
   
@@ -265,5 +258,17 @@
 }
 
  myViewCartBtn.addEventListener("click", viewOrCloseCart) 
+ 
+ 
+  if (localStorage.getItem(cartContentKey) !== null) {
+     // That means the element is in local storage.
+        //  myCartContent.innerHTML = localStorage.getItem(cartContentKey) 
+         
+         let getMotherCartArray = JSON.parse(localStorage.getItem(motherCartArrayContentKey))  //without the JSON.parse you will get object object, useless for what you want.
+          motherCartArray =  getMotherCartArray
+           motherCartArray.forEach(generateCartContents) 
+            
+                    myCartContent.innerHTML = generatedCartContentResult 
+        } 
 
  
