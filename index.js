@@ -2,7 +2,6 @@
 
 
 
-
 // Thank you Jesus
 
 // localStorage.clear()
@@ -167,18 +166,23 @@
 
                   
          function taskStatusUpdate(particularObjectIndex) {
+             
+              if(isSetTimerActive) {clearTimeout(myPromptDisplayMessage) } 
+             
                 let index = particularObjectIndex - 1
                 
                 if (motherCartArray[index].Status === "") {
                 console.log(motherCartArray[index].Status)
                 motherCartArray[index].Status = "checked"
-                console.log(motherCartArray[index].Status)
+                myPrompt.textContent = "🥂...Congratulations!!! you completed a task"
             } else{
                 motherCartArray[index].Status = ""
-                console.log(motherCartArray[index].Status)
+                myPrompt.textContent = "⏳...Task has been set to unfinished"
             }
-   console.log(motherCartArray[index])
+   
     localStorage.setItem( motherCartArrayContentKey, JSON.stringify(motherCartArray) )
+     myPromptDisplayMessage = setTimeout(wipeScreen.bind(null, myPrompt), 3000);
+              isSetTimerActive = true
 }
       
   
@@ -261,7 +265,7 @@
  
  
   if (localStorage.getItem(cartContentKey) !== null) {
-     // That means the element is in local storage.
+     // The element is in local storage.
         //  myCartContent.innerHTML = localStorage.getItem(cartContentKey) 
          
          let getMotherCartArray = JSON.parse(localStorage.getItem(motherCartArrayContentKey))  //without the JSON.parse you will get object object, useless for what you want.
