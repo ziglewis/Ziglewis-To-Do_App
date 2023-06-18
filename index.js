@@ -2,6 +2,8 @@
 
 
 
+
+
 // Thank you Jesus
 
 // localStorage.clear()
@@ -189,7 +191,7 @@
   myAddToCartBtn.addEventListener("click", addToCart)  //event listener for add to cart button
   
 
-//  HANDLING EVERYTHING ABOUT DELETING  TASK     
+//  HANDLING EVERYTHING ABOUT DELETING       
 
   function deleteTask(data) {
                 
@@ -215,14 +217,11 @@
 
                 localStorage.setItem( cartContentKey, generatedCartContentResult )
                     
-                myPrompt.textContent = "✅ Successfully deleted a task from cart";
+                myPrompt.textContent = "🗑...Successfully deleted a task from cart";
     
     myPromptDisplayMessage = setTimeout(wipeScreen.bind(null, myPrompt), 3000);
               isSetTimerActive = true
          }
-
-
-
 
 
 
@@ -255,7 +254,6 @@
         edit = true
         editTaskIndex = itemToEditIndex     
          }
-
 
 //HANDLING THE VIEW CART BTN
 
