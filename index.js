@@ -1,3 +1,7 @@
+
+
+
+
 // Thank you Jesus
 
 // localStorage.clear()
@@ -120,7 +124,8 @@
                     title: eachTitle,
                     Description: eachDescription,
                     AlertTime: eachTime,
-                    AlertDate: eachDate  
+                    AlertDate: eachDate,
+                    Status: ""  
                      }
                    if(edit){             
                         //if you are editing, this code will take out that particular item and replace it with the new edit, so the position does not change. One could also use the replace() method or map method.
@@ -144,6 +149,8 @@
   // This code generates my cart inner html to display your task in the cart, it generates content for each data passed by taking the augument data. One at a time. It also assigns class and value to each data, so we can identify each individual data. study it more succintly.
         
   generateCartContents = (data)=> {
+
+              
                     
                 generatedCartContentResult += `
                 <div class="each-task">
@@ -152,6 +159,9 @@
                 <P><strong>Time:</strong> ${data.AlertTime}  <strong>Date:</strong> ${data.AlertDate}</P>
                 <div class="cart-buttons">
                     <button class="cart-buttons-number"> ${setTaskNumber} </button>
+                    <label for="status${setTaskNumber}">
+                    <input type ="checkbox" value="${setTaskNumber}" id="status${setTaskNumber}" name="status" ${data.Status} onclick="taskStatusUpdate(${setTaskNumber})"  )> status (check! if done.)
+                </label>
                     <button class="cart-buttons-edit" value = ${setTaskNumber} onclick="editTask(${setTaskNumber})"> edit</button>
                     <button class="cart-buttons-delete" value = ${setTaskNumber} onclick="deleteTask(${setTaskNumber})"> delete</button>
                 </div>
@@ -159,7 +169,25 @@
                 `
                 setTaskNumber += 1
                     }
-  
+
+                  
+         function taskStatusUpdate(particularObjectIndex) {
+                let index = particularObjectIndex - 1
+                
+                if (motherCartArray[index].Status === "") {
+                console.log(motherCartArray[index].Status)
+                motherCartArray[index].Status = "checked"
+                console.log(motherCartArray[index].Status)
+                } else{
+                motherCartArray[index].Status = ""
+                console.log(motherCartArray[index].Status)
+               }
+               
+   console.log(motherCartArray[index])
+    localStorage.setItem( motherCartArrayContentKey, JSON.stringify(motherCartArray) )
+
+}
+      
   
   myAddToCartBtn.addEventListener("click", addToCart)  //event listener for add to cart button
   
@@ -168,31 +196,25 @@
 
   function deleteTask(data) {
 
-      if(isSetTimerActive) {clearTimeout(myPromptDisplayMessage) }
-         if(isSetTimerActive) { clearTimeout(myPromptDisplayMessage) }
-        const allDeleteBtns = document.querySelectorAll('.cart-buttons-delete');
-        let itemToDeleteIndex = data -1
+               if(isSetTimerActive) {clearTimeout(myPromptDisplayMessage) }
+               if(isSetTimerActive) { clearTimeout(myPromptDisplayMessage) }
+               let itemToDeleteIndex = data -1
     
-    
-    generatedCartContentResult = ""
-                       setTaskNumber = 1
-    
-    motherCartArray.splice(itemToDeleteIndex, 1)
-    
-      localStorage.setItem( motherCartArrayContentKey, JSON.stringify(motherCartArray) )
-      motherCartArray.forEach(generateCartContents)
+                generatedCartContentResult = ""
+                            setTaskNumber = 1
+                motherCartArray.splice(itemToDeleteIndex, 1)
+            
+                localStorage.setItem( motherCartArrayContentKey, JSON.stringify(motherCartArray) )
+                motherCartArray.forEach(generateCartContents)
                    
-                    myCartContent.innerHTML = generatedCartContentResult
+                myCartContent.innerHTML = generatedCartContentResult
+
+                localStorage.setItem( cartContentKey, generatedCartContentResult )
                     
-                    localStorage.setItem( cartContentKey, generatedCartContentResult )
-                    
-                    myPrompt.textContent = "✅ Successfully deleted a task from cart";
-    
-    
+                myPrompt.textContent = "✅ Successfully deleted a task from cart";
     
     myPromptDisplayMessage = setTimeout(wipeScreen.bind(null, myPrompt), 3000);
               isSetTimerActive = true
-
          }
 
 
@@ -206,35 +228,29 @@
 
   function editTask(data) {
 
-      if(isSetTimerActive) {
+        if(isSetTimerActive) {
                       clearTimeout(myPromptDisplayMessage) }
 
+        const allEditBtns = document.querySelectorAll('.cart-buttons-edit');
 
+        let itemToEditIndex = data -1
+        myToDoTitleInputField.value = motherCartArray[itemToEditIndex].title
+        
+        if (motherCartArray[itemToEditIndex].Description === "Not provided" ){
+            myTaskDescriptionInputField.value = ""
+        }else{ myTaskDescriptionInputField.value = motherCartArray[itemToEditIndex].Description }
 
-     const allEditBtns = document.querySelectorAll('.cart-buttons-edit');
+        if (motherCartArray[itemToEditIndex].AlertTime === "Not provided" ){
+            myTimeInputField.value = ""
+        }else{ myTimeInputField.value = motherCartArray[itemToEditIndex].AlertTime }
 
-    let itemToEditIndex = data -1
-
-
-    myToDoTitleInputField.value = motherCartArray[itemToEditIndex].title
-
-    if (motherCartArray[itemToEditIndex].Description === "Not provided" ){
-        myTaskDescriptionInputField.value = ""
-    }else{ myTaskDescriptionInputField.value = motherCartArray[itemToEditIndex].Description }
-
-     if (motherCartArray[itemToEditIndex].AlertTime === "Not provided" ){
-        myTimeInputField.value = ""
-    }else{ myTimeInputField.value = motherCartArray[itemToEditIndex].AlertTime }
-
-     if (motherCartArray[itemToEditIndex].AlertDate === "Not provided" ){
-        myDateInputField.value = ""
-    }else{ myDateInputField.value = motherCartArray[itemToEditIndex].AlertDate}
-
-    
-     edit = true
-   editTaskIndex = itemToEditIndex              
-
-  }
+        if (motherCartArray[itemToEditIndex].AlertDate === "Not provided" ){
+            myDateInputField.value = ""
+        }else{ myDateInputField.value = motherCartArray[itemToEditIndex].AlertDate}
+ 
+        edit = true
+        editTaskIndex = itemToEditIndex     
+         }
 
 //HANDLING THE VIEW CART BTN
 
