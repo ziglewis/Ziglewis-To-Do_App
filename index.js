@@ -1,9 +1,6 @@
 
 
 
-
-
-
 // Thank you Jesus
 
 // localStorage.clear()
@@ -286,4 +283,23 @@
                     myCartContent.innerHTML = generatedCartContentResult 
         } 
 
+
+        // this code controls swapping of mode from light to dark and vice vers
+        
+      const myMainElement = document.querySelector("main")
  
+        function toggleDarkMode() {
+          // Get the current class list of the main element.
+          const classList = myMainElement.classList
+          
+          // Checking if the `dark-mode` class is already present in the class list.
+          if (classList.contains("dark-mode")) {
+            // If the class name is present, remove it from the class list.
+            classList.remove("dark-mode");
+          } else {
+            // If the class name is not present, add it to the class list.
+            classList.add("dark-mode");
+          }
+        }
+        
+        document.querySelector(".toggle-dark-mode").addEventListener("click", toggleDarkMode);
