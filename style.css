@@ -1,5 +1,14 @@
 
 
+
+
+
+
+
+
+
+
+
  :root {
    --black: #212427;
    --white: #fff;
@@ -213,5 +222,10 @@ body{
    height: fit-content;
 }
 
+label {
+  display: flex;
+align-items: center;
+gap: 2px
+}
    
 
