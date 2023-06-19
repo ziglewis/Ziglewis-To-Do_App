@@ -150,8 +150,8 @@
                 <div class="cart-buttons">
                     <button class="cart-buttons-number"> ${setTaskNumber} </button>
                     <label for="status${setTaskNumber}">
-                    <input type ="checkbox" value="${setTaskNumber}" id="status${setTaskNumber}" name="status" ${data.Status} onclick="taskStatusUpdate(${setTaskNumber})"  )> status (check! if done.)
-                </label>
+                    <input type ="checkbox" value="${setTaskNumber}" id="status${setTaskNumber}" name="status" ${data.Status} onclick="taskStatusUpdate(${setTaskNumber})"  )> status <span>(check! if done.)
+                </span> </label>
                     <button class="cart-buttons-edit" value = ${setTaskNumber} onclick="editTask(${setTaskNumber})"> edit</button>
                     <button class="cart-buttons-delete" value = ${setTaskNumber} onclick="deleteTask(${setTaskNumber})"> delete</button>
                 </div>

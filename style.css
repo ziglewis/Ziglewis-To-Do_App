@@ -194,7 +194,7 @@ body{
 .cart-buttons {
    display: flex;
    justify-content: space-between;
-   margin: -5px 10px 0
+   margin: -5px 2% 0
 }
 
 .cart-buttons-number {
@@ -227,5 +227,16 @@ label {
 align-items: center;
 gap: 2px
 }
-   
 
+
+
+@media (max-width: 420px) {
+
+   span {
+      display: none;
+   }
+
+
+
+  
+}
