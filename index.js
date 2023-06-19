@@ -35,6 +35,7 @@
    let myCartBtnStatus = document.querySelector(".cart-buttons-status")
    let myEachTask = document.querySelectorAll(".each-task")  
    let myCartContent = document.querySelector(".cart")
+   let myCartContentCount = document.querySelector("sup")
      
 
   // I am declaring all the elements I need to make the app work
@@ -50,17 +51,13 @@
         let edit = false
         let  editTaskIndex = ""
         let cartDisplay = false
-  
-  
-  
-  
-  //this code will load your cart content from local storage when you refresh page or browser
-  
-   let cartContentKey = 'cartContent'
-    let motherCartArrayContentKey = "motherCartArrayContent"
+        let cartContentKey = 'cartContent'
+        let motherCartArrayContentKey = "motherCartArrayContent"
     
    
   
+  
+  // This function handles all about adding to cart
   
              const addToCart = () => {
                  
@@ -95,7 +92,7 @@
                   objectMarker()  
                   localStorage.setItem( motherCartArrayContentKey, JSON.stringify(motherCartArray) )//I am saving the completed data to local storage again remember that its an array containing objects so JSON.STRIGIFY is very vital to save to local storage
                     motherCartArray.forEach(generateCartContents) // I am now generating the content the user will see in their cart
-            
+                        myCartContentCount.textContent = motherCartArray.length // this will make the trolly to add up showing how many items inside cart.
                     myCartContent.innerHTML = generatedCartContentResult  // this will display the cart content generated
                     
                  localStorage.setItem( cartContentKey, generatedCartContentResult ) // I am saving the cart content result, notice I didnt use JSON. Actually this second saving can be avoided and the code adjusted to play from the motherCartArray, but its simpler to me this way and more readable I preesume and also sort of double assurance.
@@ -164,6 +161,7 @@
                 </div>
                 `
                 setTaskNumber += 1
+                
                     }
 
                   
@@ -212,6 +210,7 @@
             
                 localStorage.setItem( motherCartArrayContentKey, JSON.stringify(motherCartArray) )
                 motherCartArray.forEach(generateCartContents)
+                 myCartContentCount.textContent = motherCartArray.length 
                    
                 myCartContent.innerHTML = generatedCartContentResult
 
@@ -222,6 +221,9 @@
     myPromptDisplayMessage = setTimeout(wipeScreen.bind(null, myPrompt), 3000);
               isSetTimerActive = true
          }
+
+
+
 
 
 
@@ -270,6 +272,9 @@
  myViewCartBtn.addEventListener("click", viewOrCloseCart) 
  
  
+ 
+//this code will load your cart content from local storage when you refresh page or browser
+  
   if (localStorage.getItem(cartContentKey) !== null) {
      // The element is in local storage.
         //  myCartContent.innerHTML = localStorage.getItem(cartContentKey) 
@@ -277,7 +282,7 @@
          let getMotherCartArray = JSON.parse(localStorage.getItem(motherCartArrayContentKey))  //without the JSON.parse you will get object object, useless for what you want.
           motherCartArray =  getMotherCartArray
            motherCartArray.forEach(generateCartContents) 
-            
+            myCartContentCount.textContent = motherCartArray.length 
                     myCartContent.innerHTML = generatedCartContentResult 
         } 
 
