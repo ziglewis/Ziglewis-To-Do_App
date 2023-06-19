@@ -46,11 +46,11 @@ body{
 
  main {
    width: 100%;
-   margin: 100px auto;
+   margin: 10px auto;
    border: 6px solid white;
    text-align: center;
    border: 4px solid black;
-   padding: 5%;
+   padding: 10px 5%;
    max-width: 800px;
    border-radius: 20px;
    box-sizing: border-box;
@@ -59,16 +59,21 @@ body{
    color:   #212427;
 }
 
+.time-and-mode {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 2px 5px;
+}
+
  .Real-live-time {
    background-color: oldlace;
    height: fit-content;
    width: 50px;
-   position: absolute;
    padding: 20px 15px;
    border-radius: 50%;
    font-size: 11px;
    font-weight: bold;
-   margin: -15px 0px -15px -15px;
    box-shadow: -5px -2px 5px gray;
    color: black;
    min-height: 38px;
