@@ -12,12 +12,14 @@
  :root {
    --black: #212427;
    --white: #fff;
+   --blueYellow: blue;
  }
   
  /* dark Mode */
  .dark-mode {
    --black: #fff;
    --white: #212427;
+   --blueYellow: yellow;
  }
   
 
@@ -78,7 +80,7 @@ body{
    height: 20px;
    max-height: fit-content;
    margin: 0px auto -15px;
-   color:blue;
+   color: var(--blueYellow);
    text-align: center;
    max-width: 600px;
    box-sizing: border-box;
