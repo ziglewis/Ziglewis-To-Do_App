@@ -294,18 +294,18 @@
         
       const myMainElement = document.querySelector("main")
  
-        function toggleDarkMode() {
+        function toggleLightMode() {
           // Get the current class list of the main element.
           const classList = myMainElement.classList
           
           // Checking if the `dark-mode` class is already present in the class list.
-          if (classList.contains("dark-mode")) {
+          if (classList.contains("light-mode")) {
             // If the class name is present, remove it from the class list.
-            classList.remove("dark-mode");
+            classList.remove("light-mode");
           } else {
             // If the class name is not present, add it to the class list.
-            classList.add("dark-mode");
+            classList.add("light-mode");
           }
         }
         
-        document.querySelector(".toggle-dark-mode").addEventListener("click", toggleDarkMode);
+        document.querySelector(".toggle-light-mode").addEventListener("click", toggleLightMode);
