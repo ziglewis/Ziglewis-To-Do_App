@@ -255,13 +255,14 @@ gap: 2px
 .social-icons {
    display: flex;
    gap: 4%;
-   margin: 0px auto 10%;
+   margin: 0px auto 2%;
    justify-content: center;
 }
 
 .fab {
    color: var(--white);
    padding: 10px;
+   margin-top: -15px;
    
    
 }
