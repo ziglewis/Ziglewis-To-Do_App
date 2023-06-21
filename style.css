@@ -20,6 +20,7 @@
 body{
      background-color: oldlace; 
      box-sizing: border-box; 
+     margin: 0px;
 }
 
 
@@ -128,6 +129,7 @@ body{
    box-sizing: border-box;
    box-shadow: -2px 2px 5px gray;
    border: none;
+   
 }
 
 .buttons {
@@ -252,5 +254,20 @@ gap: 2px
    span {
       display: none;
    }
+
+   .time-and-date-input input {
+      width: 100px;
+   }
   
+}
+
+@media (max-height: 440px) {
+
+
+.screen{ 
+
+   position: relative;
+
+}
+   
 }
