@@ -233,7 +233,7 @@
         if(isSetTimerActive) {
                       clearTimeout(myPromptDisplayMessage) }
 
-        const allEditBtns = document.querySelectorAll('.cart-buttons-edit');
+        // const allEditBtns = document.querySelectorAll('.cart-buttons-edit');
 
         let itemToEditIndex = data -1
         myToDoTitleInputField.value = motherCartArray[itemToEditIndex].title
@@ -249,9 +249,15 @@
         if (motherCartArray[itemToEditIndex].AlertDate === "Not provided" ){
             myDateInputField.value = ""
         }else{ myDateInputField.value = motherCartArray[itemToEditIndex].AlertDate}
+
+        myPrompt.textContent = "📝...You are currently editing Task No." + data;
+    
+    myPromptDisplayMessage = setTimeout(wipeScreen.bind(null, myPrompt), 3000);
+              isSetTimerActive = true
  
         edit = true
         editTaskIndex = itemToEditIndex     
+
          }
 
 //HANDLING THE VIEW CART BTN
