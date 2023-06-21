@@ -92,7 +92,7 @@
                         myCartContentCount.textContent = motherCartArray.length // this will make the trolly to add up showing how many items inside cart.
                     myCartContent.innerHTML = generatedCartContentResult  // this will display the cart content generated
                     
-                 localStorage.setItem( cartContentKey, generatedCartContentResult ) // I am saving the cart content result, notice I didnt use JSON. Actually this second saving can be avoided and the code adjusted to play from the motherCartArray, but its simpler to me this way and more readable I preesume and also sort of double assurance.
+                 localStorage.setItem( cartContentKey, generatedCartContentResult ) // I am saving the cart content result, notice I didn't use JSON. Actually this second saving can be avoided and the code adjusted to play from the motherCartArray, but its simpler to me this way and more readable I preesume and also sort of double assurance.
                  
                 if(edit) {  myPrompt.textContent = "...EDIT SUCCESSFUL✅ "
                   edit = false
@@ -292,11 +292,11 @@
 
         // this code controls swapping of mode from light to dark and vice vers
         
-      const myMainElement = document.querySelector("main")
+      const myBodyElement = document.querySelector("body")
  
         function toggleLightMode() {
           // Get the current class list of the main element.
-          const classList = myMainElement.classList
+          const classList = myBodyElement.classList
           
           // Checking if the `dark-mode` class is already present in the class list.
           if (classList.contains("light-mode")) {
@@ -309,3 +309,34 @@
         }
         
         document.querySelector(".toggle-light-mode").addEventListener("click", toggleLightMode);
+
+
+
+
+        // Risking my code with firebase  {I was trying to use firebase to send notification as reminders to my users, but for now I am yet to master the firebase way around, I will be back  to it when I master the art. Drop me a message at Ziglewis48@gmail.com if you have clues to help.}
+
+//         // Import the functions you need from the SDKs you need
+
+
+// import { initializeApp } from "firebase/app";
+// import { getAnalytics } from "firebase/analytics";
+
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// const firebaseConfig = {
+//   apiKey: "AIzaSyB8TQkGH0ugxXNdEv1dArfamLXYaaKd5Ss",
+//   authDomain: "ziglewis-to-do-app.firebaseapp.com",
+//   projectId: "ziglewis-to-do-app",
+//   storageBucket: "ziglewis-to-do-app.appspot.com",
+//   messagingSenderId: "32177545201",
+//   appId: "1:32177545201:web:9baad2acef044d4f79ae50",
+//   measurementId: "G-93NME1EMKK"
+// };
+
+// Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
